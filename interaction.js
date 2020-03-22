@@ -1,4 +1,5 @@
 const container = document.querySelector('.container');
+const btn = document.querySelector('.btn');
 
 /*create a function makeGrid(size): size is number of squares per side
     have a for loop that create div belongs to class "grid-item"
@@ -21,5 +22,39 @@ function makeGrid(size = 16) {
 
 }
 
-//makeGrid(25);
+function resetSize() {
+    let size = prompt("Enter you new sketch size: ");
+
+    //remove old sketch
+    const divs = document.querySelectorAll('.gridItem');
+    divs.forEach(div => {
+        container.removeChild(div);         
+    });
+
+    //make new sketch
+    if (isNaN(size) || size < 0) 
+    {
+        makeGrid();
+    }
+
+    else 
+    {
+        makeGrid(size);
+    }
+    changeColor();
+}
+
+function changeColor(){
+    const divs = document.querySelectorAll('.gridItem');
+    divs.forEach(div => {
+        div.addEventListener("mouseover", (e) => {
+            div.classList.add('changeColor');
+            console.log(div);
+        })
+    });
+}
+
+//========================================
+btn.addEventListener("click", resetSize);
 makeGrid();
+changeColor();
