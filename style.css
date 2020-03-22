@@ -20,10 +20,16 @@
     width: 600px;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
+    background-color: #eeeeee;
     
 }
 
 .gridItem {
-    background-color: white;
+    background-color: #393e46;
     border: 1px solid rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+.changeColor{
+    background-color: #18b0b0;
 }
