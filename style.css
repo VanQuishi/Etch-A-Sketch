@@ -1,6 +1,14 @@
 body{
     background-color: #242526;
 }
+
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
@@ -8,24 +16,13 @@ body{
 
 .container{
     display: grid;
-
-    margin: auto;
-    position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-    right: 0;
-    
-   
     border-color: black;
     border-style: solid;
     border: 1px;
-    height: 600px;
-    width: 600px;
+    height: 400px;
+    width: 400px;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
-
-    
 }
 
 .gridItem {
@@ -40,30 +37,22 @@ body{
 }
 
 .title{
-    position: absolute;
     text-align: center;
-    left: 0;
-    right: 0;
-    margin-top: 80px;
 }
 
 .text{
     font-family: "montserrat";
     color: #18b0b0;
-    font-size: 50px;
+    font-size: 30px;
 }
 
 .button{
-    position: absolute;
     text-align: center;
-    left: 0;
-    right: 0;
-    margin-top: 850px;
-
 }
 
 .btn{
     border: 1px solid #18b0b0;
+    border-radius: 25px;
     background: none;
     color: #18b0b0;
     padding: 10px 20px;
@@ -75,5 +64,6 @@ body{
 
 
 .btn:hover{
-    color: #393e46;
+    color: #242526;
+    background-color: #18b0b0;
 }
