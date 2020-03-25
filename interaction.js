@@ -58,6 +58,9 @@ function changeColor(){
             console.log(div);
         })
     });
+
+    const title = document.querySelector('.text');
+    title.classList.remove('rgb');
 }
 
 function resetRGB(){
