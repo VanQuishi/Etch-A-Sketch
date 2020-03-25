@@ -1,5 +1,6 @@
 const container = document.querySelector('.container');
-const btn = document.querySelector('.btn');
+const btn_1 = document.querySelector('.btn-1');
+const btn_2 = document.querySelector('.btn-2');
 
 /*create a function makeGrid(size): size is number of squares per side
     have a for loop that create div belongs to class "grid-item"
@@ -7,7 +8,13 @@ const btn = document.querySelector('.btn');
 
 */
 
-function makeGrid(size = 16) {
+function makeGrid(size) {
+
+    if (isNaN(size) || size < 0) 
+    {
+        size = 16;
+    }
+
     container.style.setProperty('--grid-rows', size);
     container.style.setProperty('--grid-cols', size);
 
@@ -22,25 +29,24 @@ function makeGrid(size = 16) {
 
 }
 
-function resetSize() {
-    let size = prompt("Enter you new sketch size: ");
+function clearGrid() {
 
-    //remove old sketch
     const divs = document.querySelectorAll('.gridItem');
     divs.forEach(div => {
         container.removeChild(div);         
     });
 
-    //make new sketch
-    if (isNaN(size) || size < 0) 
-    {
-        makeGrid();
-    }
+}
 
-    else 
-    {
-        makeGrid(size);
-    }
+function resetSize() {
+    let size = prompt("Enter you new sketch size: ");
+
+    //remove old sketch
+    clearGrid();
+
+    //make new sketch
+    makeGrid(size);
+
     changeColor();
 }
 
@@ -54,7 +60,34 @@ function changeColor(){
     });
 }
 
+function resetRGB(){
+    let size = prompt("Enter you new sketch size: ");
+
+    //remove old sketch
+    clearGrid();
+
+    //make new sketch
+    makeGrid(size);
+
+    RGB();
+}
+
+function RGB(){
+    const divs = document.querySelectorAll('.gridItem');
+    divs.forEach(div => {
+        div.addEventListener("mouseenter", (e) => {
+            let color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+            div.style.backgroundColor = color;
+        })
+    });
+
+    const title = document.querySelector('.text');
+    title.classList.add('rgb');
+
+}
+
 //========================================
-btn.addEventListener("click", resetSize);
 makeGrid();
 changeColor();
+btn_1.addEventListener("click", resetSize);
+btn_2.addEventListener("click", resetRGB);
